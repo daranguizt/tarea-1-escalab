@@ -4,7 +4,6 @@ import "./result-item.styles.scss";
 class ResultItem extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
       currency: props.currency,
       date: props.date,

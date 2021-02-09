@@ -13,16 +13,22 @@ class SearchPage extends React.Component {
     };
   }
 
+  componentDidMount(){
+    this.setState({keys: Object.keys(this.state.data)})
+  }
+
+
   handleInput = (e) => {
+
     if (e.key === "Enter") {
-      this.setState({ showResults: true, currency: e.target.value });
-      e.target.value = "";
+      if (this.state.keys.includes(e.target.value) || e.target.value === "") {
+        this.setState({ showResults: true, currency: e.target.value });
+        e.target.value = "";
+      }else{
+        alert('Valor no presente. Presiona enter sin valor para ver todos');
+      }
     }
   };
-
-  componentDidUpdate(){
-    console.log('component did update');
-  }
 
   render() {
     return (
