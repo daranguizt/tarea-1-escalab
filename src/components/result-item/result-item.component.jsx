@@ -2,10 +2,6 @@ import React, { Fragment } from "react";
 import "./result-item.styles.scss";
 
 class ResultItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {currency, date, value, type} = this.props;
     return (
