@@ -4,31 +4,17 @@ import "./result-item.styles.scss";
 class ResultItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      currency: props.currency,
-      date: props.date,
-      value: props.value,
-      type: props.type,
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      data: nextProps.data,
-      currency: nextProps.currency,
-      value: nextProps.value,
-      type: nextProps.type,
-    });
   }
 
   render() {
+    const {currency, date, value, type} = this.props;
     return (
       <Fragment>
         <div className="result-item">
-          <div>{this.state.currency}</div>
-          <div>{this.state.date}</div>
-          <div>{this.state.value}</div>
-          <div>{this.state.type}</div>
+          <div>{currency}</div>
+          <div>{date}</div>
+          <div>{value}</div>
+          <div>{type}</div>
         </div>
       </Fragment>
     );

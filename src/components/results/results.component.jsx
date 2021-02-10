@@ -3,20 +3,8 @@ import ResultItem from "../result-item/result-item.component";
 import "./results.styles.scss";
 
 class Results extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      data: props.data,
-      currency: props.currency,
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({ data: nextProps.data, currency: nextProps.currency });
-  }
-
   render() {
+    const {data, currency} = this.props;
     return (
       <div className="results">
         <ResultItem
@@ -27,19 +15,19 @@ class Results extends React.Component {
           type="Unidad de medida"
         />
         <hr></hr>
-        {this.state.currency && this.state.currency.trim() !== ""
-          ? this.state.data[
-              this.state.currency
+        {currency && currency.trim() !== ""
+          ? data[
+              currency
             ].serie.map(({ fecha, valor }, index) => (
               <ResultItem
                 key={index}
-                currency={this.state.currency}
+                currency={currency}
                 date={fecha.split("T")[0]}
                 value={valor}
-                type={this.state.data[this.state.currency].unidad_medida}
+                type={data[currency].unidad_medida}
               />
             ))
-          : Object.values(this.state.data).map((dataObj, index) => {
+          : Object.values(data).map((dataObj, index) => {
               return (
                 <ResultItem
                   key={index}
