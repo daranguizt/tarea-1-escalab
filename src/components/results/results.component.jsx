@@ -21,7 +21,7 @@ class Results extends React.Component {
             ].serie.map(({ fecha, valor }, index) => (
               <ResultItem
                 key={index}
-                currency={currency}
+                currency={currency.toUpperCase()}
                 date={fecha.split("T")[0]}
                 value={valor}
                 type={data[currency].unidad_medida}

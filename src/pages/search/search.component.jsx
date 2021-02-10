@@ -13,30 +13,29 @@ class SearchPage extends React.Component {
     };
   }
 
-  componentDidMount(){
-    this.setState({keys: Object.keys(this.state.data)})
-  }
-
-
   handleInput = (e) => {
-
     if (e.key === "Enter") {
-      if (this.state.keys.includes(e.target.value) || e.target.value === "") {
-        this.setState({ showResults: true, currency: e.target.value });
+      const val = e.target.value.trim().toLowerCase();
+      if (
+        Object.keys(this.state.data).includes(val) ||
+        e.target.value === ""
+      ) {
+        this.setState({ showResults: true, currency: val });
         e.target.value = "";
-      }else{
-        alert('Valor no presente. Presiona enter sin valor para ver todos');
+      } else {
+        alert("Valor no presente. Presiona enter sin valor para ver todos");
       }
     }
   };
 
   render() {
+    const {data, currency} = this.state;
     return (
       <div>
         <h1>This is the Search Page</h1>
         <input className="search-bar" onKeyPress={this.handleInput}></input>
         {this.state.showResults ? (
-          <Results currency={this.state.currency} data={this.state.data} />
+          <Results currency={currency} data={data} />
         ) : null}
       </div>
     );
